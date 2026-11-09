@@ -17,7 +17,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/healthguard-adaptive-icon.png",
         "backgroundColor": "#087e78"
-      }
+      },
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       [
