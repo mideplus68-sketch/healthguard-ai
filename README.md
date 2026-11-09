@@ -10,6 +10,16 @@ A non-diagnostic family health-record prototype for Android, iOS and web preview
 
 The web view is useful for a prototype walkthrough. Native device builds are the intended mobile experience. Without Supabase credentials, records persist in device/browser local storage. Clearing app/browser storage removes them. This is demo storage only: do not use real patient information or a shared device.
 
+## Build an Android APK
+
+The project is an Expo native app. To create an installable Android APK with Expo Application Services (EAS):
+
+1. Sign in to an Expo account: `pnpm dlx eas-cli login`.
+2. Link this repository to an EAS project: `pnpm dlx eas-cli build:configure`.
+3. Start an internal Android APK build: `pnpm dlx eas-cli build --platform android --profile preview`.
+
+EAS will guide you through Android signing setup. The `preview` profile creates an APK for direct device installation; `production` creates an Android App Bundle for Play Store distribution. EAS credentials are managed by Expo and should not be committed to this repository.
+
 ## Supabase connection
 
 The app supports Supabase email/password accounts and cloud sync for profiles, temperature/notes, symptom check-ins, and laboratory-reported RDT/microscopy results. The schema enables Row Level Security and scopes each row to its authenticated owner. While cloud sync is unavailable, pending records are kept in owner-specific device/browser storage and retried after reconnect; this local storage is not encrypted by this prototype. The clinician review tab remains a local-only demonstration; it does not expose records to clinicians or other accounts.
