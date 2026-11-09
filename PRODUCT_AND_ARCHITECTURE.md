@@ -30,7 +30,7 @@ Future production boundary (not implemented)
                  └── laboratory partner adapters
 ```
 
-The “AI” name is a product name only in this prototype. Explanations are fixed product copy, not generated clinical advice. Supabase provides an early authenticated owner-only record store; the clinician screen remains local and does not read cloud records. The configured project's primary region is Central EU (Frankfurt), selected at the user's request. No production privacy, security, clinical validation, or regulatory claim is made. Review identity, guardian/consent rules, audit, retention, deletion/export, incident response, data residency and applicable Nigerian obligations before any real patient data or deployment. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for setup details.
+The “AI” name is a product name only in this prototype. Explanations are fixed product copy, not generated clinical advice. Supabase provides an early authenticated owner-only record store; the clinician screen remains local and does not read cloud records. If sync is unavailable, a user-specific local pending queue persists changed records and reconciles them by ID after reconnect. This device/browser storage is not encrypted by the prototype. The configured project's primary region is Central EU (Frankfurt), selected at the user's request. No production privacy, security, clinical validation, or regulatory claim is made. Review identity, guardian/consent rules, audit, retention, deletion/export, incident response, data residency and applicable Nigerian obligations before any real patient data or deployment. See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for setup details.
 
 ## Data model direction for a secured backend
 
@@ -46,11 +46,12 @@ Use explicit consent and role-based access; encrypt transport and stored sensiti
 ## Safety and clinical assumptions to validate
 
 1. Symptoms and temperature are not sufficient to confirm malaria. The app records information and directs users to qualified care/testing; it does not make a diagnosis or treatment recommendation.
-2. A clinician and local health authority must review every red-flag phrase, pathway, age-specific caveat, and escalation destination before any pilot. The current fixed warning list and urgent message are illustrative prototype content, not an approved triage protocol.
-3. A laboratory partner must define accepted RDT/microscopy methods, quality assurance, result provenance, correction process, turnaround expectations, and escalation for inconclusive results.
-4. Define inclusion/exclusion criteria, guardian consent and child assent where applicable, language/localization, accessibility, and low-connectivity behavior with local clinical and community reviewers.
-5. Determine Nigerian data-protection, health-product, and medical-device obligations with qualified privacy/regulatory counsel and relevant authorities before a public or clinical deployment. No regulatory status is asserted here.
-6. No clinical validation or usability study has been completed. Any future evaluation needs a prospective protocol, ethics review as applicable, predefined endpoints, and comparison against quality-assured reference testing.
+2. A clinician and local health authority must review every warning-sign phrase, pathway, age-specific caveat, urgent-care message, and referral wording before any pilot. This is a hard pilot gate, not an optional follow-up. The current fixed warning list and urgent message are illustrative prototype content, not an approved triage protocol.
+3. Laboratory results are entered manually by users. The prototype does not verify the report, the reporting laboratory, or the identity of the person entering it; it has no laboratory integration, report upload, or provenance validation. Preserve the original report and treat the displayed result as user-entered information.
+4. A laboratory partner must define accepted RDT/microscopy methods, quality assurance, result provenance, correction process, turnaround expectations, and escalation for inconclusive results.
+5. Define inclusion/exclusion criteria, guardian consent and child assent where applicable, language/localization, accessibility, and low-connectivity behavior with local clinical and community reviewers.
+6. Determine Nigerian data-protection, health-product, and medical-device obligations with qualified privacy/regulatory counsel and relevant authorities before a public or clinical deployment. No regulatory status is asserted here.
+7. No clinical validation or usability study has been completed. Any future evaluation needs a prospective protocol, ethics review as applicable, predefined endpoints, and comparison against quality-assured reference testing.
 
 ## Execution plan
 

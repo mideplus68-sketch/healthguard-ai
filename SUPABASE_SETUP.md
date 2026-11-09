@@ -7,7 +7,7 @@ The prototype writes owner-scoped records to Supabase when the app is configured
 - Email/password sign-up and sign-in via Supabase Auth.
 - `profiles`, `measurements`, `symptom_checkins`, and `lab_results` tables.
 - Row Level Security policies that permit an authenticated user to access rows where `owner_id = auth.uid()`.
-- Local persistence of the selected profile only; record data is stored in Supabase when configured.
+- The selected profile is stored locally. When cloud sync is unavailable, unsynced records are kept in an owner-specific local pending queue and retried/reconciled by record ID after connectivity returns. AsyncStorage is not encrypted by this prototype; avoid shared devices and use synthetic data only.
 
 The client uses only the project URL and publishable key. Never put a service-role/secret key or the database password in the mobile/web app. RLS is mandatory because a publishable key is visible to client applications.
 
