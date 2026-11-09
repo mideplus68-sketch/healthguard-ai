@@ -4,15 +4,15 @@ A non-diagnostic family health-record prototype for Android, iOS and web preview
 
 ## Run it
 
-1. Install Node.js 20.19+ (or a current compatible Node LTS) and npm.
-2. From this folder run `npm install`.
-3. Run `npm start`, then open the QR code with Expo Go, or press `w` for the web preview. Use `npm run android` or `npm run ios` with the matching simulator/device configured.
+1. Install Node.js 20.19+ (or a compatible current Node LTS) and enable pnpm with Corepack (`corepack enable pnpm`).
+2. From this folder run `pnpm install --frozen-lockfile`.
+3. Run `pnpm start`, then open the QR code with Expo Go, or press `w` for the web preview. Use `pnpm android` or `pnpm ios` with the matching simulator/device configured.
 
 The web view is useful for a prototype walkthrough. Native device builds are the intended mobile experience. Without Supabase credentials, records persist in device/browser local storage. Clearing app/browser storage removes them. This is demo storage only: do not use real patient information or a shared device.
 
 ## Supabase connection
 
-The app supports Supabase email/password accounts and cloud sync for profiles, temperature/notes, symptom check-ins, and laboratory-reported RDT/microscopy results. The schema enables Row Level Security and scopes each row to its authenticated owner. The clinician review tab remains a local-only demonstration; it does not expose records to clinicians or other accounts.
+The app supports Supabase email/password accounts and cloud sync for profiles, temperature/notes, symptom check-ins, and laboratory-reported RDT/microscopy results. The schema enables Row Level Security and scopes each row to its authenticated owner. While cloud sync is unavailable, pending records are kept in owner-specific device/browser storage and retried after reconnect; this local storage is not encrypted by this prototype. The clinician review tab remains a local-only demonstration; it does not expose records to clinicians or other accounts.
 
 1. Create a Supabase project, then copy `.env.example` to `.env`.
 2. In the Supabase project dashboard, copy the Project URL and **publishable** key into `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Never put a `service_role` key in the app.
@@ -25,7 +25,8 @@ Existing device/browser records are not uploaded automatically when cloud auth i
 ## Prototype boundaries
 
 - The app does not diagnose malaria or any other illness, interpret a test result, or recommend medication or treatment.
-- Symptom selections are user-reported and are not a validated score. Only the explicit warning-sign selections show the fixed urgent-care message.
+- Symptom selections are user-reported and are not a validated score. Only explicit warning-sign selections show fixed safety wording. Warning signs and all urgent-care/referral wording require clinician review before any pilot; this is an explicit release gate.
+- Laboratory test type, result, date, and laboratory name are entered manually by the user. The app does not verify report authenticity or connect to a laboratory; keep the original report and confirm any uncertainty with the laboratory or a qualified clinician.
 - The clinician screen is still a local demonstration view. There is no clinician account, patient sharing, or clinician remote access. Supabase account authentication is available only for the record owner.
 - There is no clinical validation, laboratory integration, regulatory approval, or production security claim.
 
