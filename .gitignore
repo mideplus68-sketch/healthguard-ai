@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+.expo-home/
+.local-appdata/
+.roaming-appdata/
+.npm-cache/
+node_modules.previous/
+node_modules.partial/
+dist/
+web-build/
+*.log
+.env
+.env.*
+!.env.example
+.pnpm-store/
+

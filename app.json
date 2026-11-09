@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "HealthGuard AI",
+    "slug": "healthguard-ai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": { "backgroundColor": "#f5f8fa" },
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.healthguardai.prototype" },
+    "android": { "package": "com.healthguardai.prototype", "adaptiveIcon": { "backgroundColor": "#f5f8fa" } },
+    "plugins": [["expo-image-picker", { "photosPermission": "Allow HealthGuard AI to select a profile photo." }]],
+    "web": { "bundler": "metro" }
+  }
+}
+
